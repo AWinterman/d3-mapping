@@ -1,0 +1,20 @@
+{
+  "name": "d3-mapping",
+  "version": "0.0.1",
+  "description": "Utility to make working with d3 scales less painful",
+  "main": "Mapping.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AWinterman/d3-mapping.git"
+  },
+  "keywords": [
+    "d3",
+    "scales"
+  ],
+  "author": "Andrew Winterman",
+  "license": "MIT",
+  "gitHead": "d419b8d1619e5920925d6e23e96f3b86406a4b9b"
+}
