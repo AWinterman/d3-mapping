@@ -1,4 +1,5 @@
-var Mapping = require("../d3-mapping");
+var Mapping = require("../Mapping")
+  , d3 = require("d3")
 
 // define canvas
 var margin = {top: 20, right: 20, bottom: 30, left: 50},

@@ -1,5 +1,7 @@
 module.exports = Mapping
 
+var d3 = require("d3")
+
 function Mapping(scale, accessor){
   //defines a base object which handles all the information around mapping from
   //the data space to the screen space
@@ -49,4 +51,4 @@ proto.create_axis = function(){
   this.axis = d3.svg.axis()
   this.axis.scale(this.scale)
   return this.axis
-})
+}
