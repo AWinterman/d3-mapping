@@ -23,7 +23,7 @@ x has convenience methods for a number of common tasks.
 
 
 - `x.place(d)` returns the value  a data element is mapped to. `x.place` will
-  dodge d3's reassignment of the this operator, so you are free to use within
+  dodge d3's reassignment of the `this` object, so you are free to use within
   `.attr` assignments, etc.
 - `x.create_domain(data)` will call `d3.extent(data, x.accessor)`. Currently
   doesn't support ordinal scales.
