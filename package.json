@@ -1,6 +1,6 @@
 {
   "name": "d3-mapping",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Utility to make working with d3 scales less painful",
   "main": "Mapping.js",
   "scripts": {
