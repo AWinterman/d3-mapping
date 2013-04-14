@@ -37,12 +37,20 @@ proto._place = function(elem, data_point){
   return this.scale(this.accessor(data_point))
 }
 
-proto.compute_domain = function(data){
+proto.compute_domain = function(data, ordinal){
   //computes the extent of the data dimension associated with this mapping.
+  //spcify ordinal == true for ordinal data
 
-  //TODO: add support for discrete data
   var self = this
-  self.domain(d3.extent(data, self.accessor))
+    , points = data.map(self.accessor)
+
+  if (ordinal){
+    //find unique values
+    self.domain(d3.set(points).values())
+  } else {
+    //find max and min
+    self.domain(d3.extent(points))
+  }
   return self.scale
 }
 
