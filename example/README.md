@@ -16,10 +16,11 @@ Then navigate to the root of this git repository. Run:
 
 
 ```
-beefy example/example.js 8765 --live
+cd example
+beefy example.html 8765 --live
 ```
 
-and navigate your browser to localhost:8765/example/example.html
+and navigate your browser to localhost:8765/example.html
 
 
 
