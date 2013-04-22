@@ -5,7 +5,7 @@
 
 ''
 
-// ## Exports the constructor function.
+// #### Exports the constructor function.
 //  Usage: 
 // ```js
 // var mapping = new Mapping(d3.scale.linear(), accessor)
