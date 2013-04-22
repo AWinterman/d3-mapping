@@ -25,30 +25,25 @@ var d3 = require("d3")
 // within the constructor's closure.
 function Mapping(scale, accessor){
 
-  // We're going to need the current `this` object.
   var self = this
 
-  // Save the arguments to Mapping.
   self.scale = scale 
   self.accessor = accessor
 
-  // Aliases for convenience-- the user calls `mapping.domain`, or
-  // `mapping.range`.
   self.domain = self.scale.domain
   self.range = self.scale.range
 
-  // `mapping.place` calls the accessor
-  //  and then passes its results through the scale. 
+  // `mapping.place` calls `mapping._place` with the data point. This is
+  // necessary because D3 methods overwrite the `this` object, in function
+  // calls.  In order to maintain a reference to the `mapping` object, we
+  // simply use  `self` from  the enclosing scope.
+
   self.place = function(data_point){
-    // D3 methods overwrite the `this` object, so, in order to maintain a
-    // reference to `mapping`, I reference `self` from  the enclosing
-    // scope.
-    return self._place(this, data_point)
+      return self._place(data_point)
   } 
 
-  // _axis_flag is a boolean to indicate whether we have already initialized an axis or not.
+  // `mapping._axis_flag` is a boolean to indicate whether we have initialized an axis.
   self._axis_flag = false
-  //it's common for the user to set max and min herself
 }
 
 
@@ -61,12 +56,13 @@ var cons =  Mapping
 proto.constructor = cons
 
 // ## Method definitions
+''
 
 // #### mapping._place ###
 // Maps the data point into the screen space. The leading underscore reminds
 // users that they should use `mapping.place` over this method.
 
-proto._place = function(elem, data_point){
+proto._place = function(data_point){
   return this.scale(this.accessor(data_point))
 }
 
@@ -74,7 +70,7 @@ proto._place = function(elem, data_point){
 // ## Axis helpers
 
 // #### mapping.create_axis
-// Create an axis for this.scale.
+// Create an axis for `mapping.scale`.
 proto.create_axis = function(){
   this.axis = d3.svg.axis()
   this.axis.scale(this.scale)
@@ -83,7 +79,7 @@ proto.create_axis = function(){
 
 
 // #### mapping.axis
-// a convenience function so the user only ever needs to call mapping.axis
+// a convenience function so the user only ever needs to call `mapping.axis`
 proto.axis = function(){
   if(!this._axis_flag){
     this.create_axis()
@@ -93,12 +89,13 @@ proto.axis = function(){
 
 
 // ## Domain helpers
+''
 
 
 // #### mapping.min, mapping.max
 // Set the max or min element of the data domain.
 //
-// This function will compute the max if provided an array, simply set it if
+// This function will compute the max if provided an array, set it if
 // provided with a single value, or if no argument is provided, it will return
 // the value of the current maximum.
 //
@@ -107,8 +104,8 @@ proto.axis = function(){
 // * *1 argument*: the mapping object
 // * *0 arguments*: the current bounds of the array
 //
-// max and min are essentially the same thing (modula the extrema), so the
-// heavy lifting is done by `bound`, defined below,
+// max and min are essentially the same thing (modula the extrema), so they are
+// extracted away into the function `bound`, defined below,
 
 proto.min(d){
   return bound(d, {idx: 0, func: d3.min})
@@ -119,7 +116,7 @@ proto.max(d){
 }
 
 // #### mapping.compute_domain
-// Computes the extent of the data dimension associated with self mapping.
+// Computes the extent of the data dimension associated with this `mapping`.
 // If you specify `ordinal == true`, it will find the unique elements in the
 // values returned by `mapping.accessor` rather
 // than their extent.
