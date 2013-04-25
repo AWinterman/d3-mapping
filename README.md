@@ -21,5 +21,5 @@ x = new Mapping(xScale, xAccessor)
 
 `x` has convenience methods for a number of common tasks. 
 
-[Read
-the literate source](./docs/Mapping.html) for more info
+[Check out](http://awinterman.github.io/d3-mapping/example/) A working example,
+or  [Read the literate source](http://awinterman.github.io/d3-mapping/docs/Mapping.html) for more info
