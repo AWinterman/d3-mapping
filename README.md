@@ -12,7 +12,7 @@ Designed to be used node style:
 var Mapping = require("d3-mapping")
 ```
 
-Initialize a new mapping with a scale and an acessor function
+Initialize a new mapping with a scale and an accessor function
 
 ```js
 x = new Mapping(xScale, xAccessor)
@@ -21,5 +21,5 @@ x = new Mapping(xScale, xAccessor)
 
 `x` has convenience methods for a number of common tasks. 
 
-Check out an example [example](github.com/AWinterman/d3-mapping/example) usage, and [read
+[Read
 the literate source](AWinterman.github.io/d3-mapping/docs/Mapping.html) for more info
