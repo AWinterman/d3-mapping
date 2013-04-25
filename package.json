@@ -12,7 +12,8 @@
   },
   "keywords": [
     "d3",
-    "scales"
+    "scales",
+    "d3js"
   ],
   "author": "Andrew Winterman",
   "license": "MIT",
