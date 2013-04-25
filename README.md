@@ -24,15 +24,20 @@ x = new Mapping(xScale, xAccessor)
 `x` has convenience methods for a number of common tasks. For example:
 
  - `x.scale` holds the reference to the original scale.
- - `x.place` will map data points onto the screen. It does a little dance with
-   to prevent d3 from overwriting its `this` object, so you can use it in d3
+ - `x.range` and `x.domain` provide convenience access to `x.scale.domain` and
+   `x.scale.range`
+ - `x.place` will map data points onto the screen. It does a little dance
+   to prevent D3 from overwriting its `this` object, so you can use it in d3
    attribute setters.
  - `x.compute_domain(data, ordinal)` will compute the domain of `data`, set
    `ordinal == true` to find the unique elements for the dimension rather than
    the extent
- - `x.min`, `x.max` let you either set the min or max to their argument if you
-   pass a single number, or if you pass an array they compute the mi or max of
-   the array.
+ - `x.min` and `x.max` give more flexibility in manipulating the domain of the
+   mapping. If you provide one argument, the minimum (maximum) of the mapping
+   domain is simply set to that argument. If you
+   pass an array, they compute the minimum or maximum of the value returned by the
+   accessor when applied to the array, and set the corresponding bound of
+   the domain.
 
 
 
