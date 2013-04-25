@@ -4,7 +4,7 @@
   "description": "Utility to make working with d3 scales less painful",
   "main": "Mapping.js",
   "scripts": {
-    "test": ""
+    "test": "node tests.js"
   },
   "repository": {
     "type": "git",
