@@ -21,5 +21,4 @@ x = new Mapping(xScale, xAccessor)
 
 `x` has convenience methods for a number of common tasks. 
 
-Check out an example [example](http://github.com/AWinterman/d3-mapping/example) usage, and [read
-the literate source](http://AWinterman.github.io/d3-mapping/docs/Mapping.html) for more info
+[Read the literate source](http://AWinterman.github.io/d3-mapping/docs/Mapping.html) for more info
