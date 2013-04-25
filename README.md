@@ -22,4 +22,4 @@ x = new Mapping(xScale, xAccessor)
 `x` has convenience methods for a number of common tasks. 
 
 [Read
-the literate source](AWinterman.github.io/d3-mapping/docs/Mapping.html) for more info
+the literate source](./docs/Mapping.html) for more info
