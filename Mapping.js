@@ -66,7 +66,6 @@ proto._place = function(data_point){
   return this.scale(this.accessor(data_point))
 }
 
-
 // ## Axis helpers
 
 // #### mapping.create_axis
@@ -107,12 +106,12 @@ proto.axis = function(){
 // max and min are essentially the same thing (modula the extrema), so they are
 // extracted away into the function `bound`, defined below,
 
-proto.min(d){
-  return bound(d, {idx: 0, func: d3.min})
-}
 
-proto.max(d){
-  return bound(d, {idx: 1, func: d3.max})
+proto.min = function(d){
+  return bound.call(this, d, {idx: 0, func: d3.min})
+}
+proto.max = function(d){
+  return bound.call(this, d, {idx: 1, func: d3.max})
 }
 
 // #### mapping.compute_domain
@@ -122,7 +121,7 @@ proto.max(d){
 // than their extent.
 
 proto.compute_domain = function(data, ordinal){
-  var self = self
+  var self = this
   var points = data.map(self.accessor)
   if (ordinal){
     self.domain(d3.set(points).values())
@@ -146,7 +145,7 @@ function bound(d, w){
   }
 
   if(!isNaN(d.length)) {
-    domain[w.idx] = which.func(d, self.accessor)
+    domain[w.idx] = w.func(d, self.accessor)
   } else {
     domain[w.idx] = d
   }
