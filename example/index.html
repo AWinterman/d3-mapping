@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>index.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>index.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              <p> This example depends on d3 and Mapping.
+ You can view the results at
+ <a href="http://awinterman.github.io/d3-mapping/example/example.html">here</a></p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> Mapping = require(<span class="string">"../Mapping"</span>)
+  , d3 = require(<span class="string">"d3"</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>Define canvas.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> margin = {top: <span class="number">20</span>, right: <span class="number">20</span>, bottom: <span class="number">30</span>, left: <span class="number">50</span>},
+    width = <span class="number">960</span> - margin.left - margin.right,
+    height = <span class="number">500</span> - margin.top - margin.bottom;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Add the canvas to the DOM</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> svg = d3.select(<span class="string">"body"</span>).append(<span class="string">"svg"</span>)
+    .attr(<span class="string">"width"</span>, width + margin.left + margin.right)
+    .attr(<span class="string">"height"</span>, height + margin.top + margin.bottom)
+  .append(<span class="string">"g"</span>)
+    .attr(<span class="string">"transform"</span>, <span class="string">"translate("</span> + margin.left + <span class="string">","</span> + margin.top + <span class="string">")"</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Initialize Mapping with the d3 scale you&#39;d like and an accessor function,
+which take an element of your data array and returns the value you are
+mapping to this dimension.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> x = <span class="keyword">new</span> Mapping(d3.time.scale(), <span class="keyword">function</span>(d){<span class="keyword">return</span> d3.time.format(<span class="string">"%d-%b-%y"</span>).parse(d.date)})
+<span class="keyword">var</span> y = <span class="keyword">new</span> Mapping(d3.scale.linear(), <span class="keyword">function</span>(d){<span class="keyword">return</span> +d.close})</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Set the ranges.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>x.range([<span class="number">0</span>, width]);
+y.range([height, <span class="number">0</span>]);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Create some axes. (calls d3.svg.axis).</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>x.create_axis().orient(<span class="string">"bottom"</span>)
+y.create_axis().orient(<span class="string">"left"</span>)
+
+<span class="keyword">var</span> area = d3.svg.area()
+    .x(x.place)
+    .y0(height)
+    .y1( y.place);
+
+
+d3.tsv(<span class="string">"data.tsv"</span>, <span class="keyword">function</span>(error, data) {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Compute the domains: </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  x.compute_domain(data);
+  y.compute_domain(data);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>but we actually want the y.domain to range to zero.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  y.min(<span class="number">0</span>)</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>if you ever need to access other features of the scale, they&#39;re available
+via <code>x.scale.&lt;attr&gt;</code>.</p>
+<p>Drawing the graph.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  svg.append(<span class="string">"path"</span>)
+      .datum(data)
+      .attr(<span class="string">"class"</span>, <span class="string">"area"</span>)
+      .attr(<span class="string">"d"</span>, area);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Add the x axis. </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  svg.append(<span class="string">"g"</span>)
+      .attr(<span class="string">"class"</span>, <span class="string">"x axis"</span>)
+      .attr(<span class="string">"transform"</span>, <span class="string">"translate(0,"</span> + height + <span class="string">")"</span>)
+      .call(x.axis);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Add the y axis, and it&#39;s labels</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>  svg.append(<span class="string">"g"</span>)
+      .attr(<span class="string">"class"</span>, <span class="string">"y axis"</span>)
+      .call(y.axis)
+    .append(<span class="string">"text"</span>)
+      .attr(<span class="string">"transform"</span>, <span class="string">"rotate(-90)"</span>)
+      .attr(<span class="string">"y"</span>, <span class="number">6</span>)
+      .attr(<span class="string">"dy"</span>, <span class="string">".71em"</span>)
+      .style(<span class="string">"text-anchor"</span>, <span class="string">"end"</span>)
+      .text(<span class="string">"Price ($)"</span>);
+});</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

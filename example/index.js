@@ -1,3 +1,6 @@
+//  This example depends on d3 and Mapping.
+//  You can view the results at
+//  [here](http://awinterman.github.io/d3-mapping/example/example.html)
 var Mapping = require("../Mapping")
   , d3 = require("d3")
 
