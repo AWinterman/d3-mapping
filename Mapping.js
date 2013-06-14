@@ -1,3 +1,4 @@
+var d3 = require("d3")
 // Mapping handles all the book-keeping required to map points 
 // from the data space into coordinates of screen space.
 module.exports = Mapping
@@ -68,6 +69,7 @@ proto.create_axis = function(){
 proto.min = function(d){
   return bound(this, d, {idx: 0, func: d3.min})
 }
+
 proto.max = function(d){
   return bound(this, d, {idx: 1, func: d3.max})
 }

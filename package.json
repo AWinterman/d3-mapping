@@ -17,5 +17,9 @@
   ],
   "author": "Andrew Winterman",
   "license": "MIT",
-  "gitHead": "d419b8d1619e5920925d6e23e96f3b86406a4b9b"
+  "gitHead": "d419b8d1619e5920925d6e23e96f3b86406a4b9b",
+  "dependencies": {
+    "d3": "~3.2.0",
+    "tape": "~1.0.4"
+  }
 }
