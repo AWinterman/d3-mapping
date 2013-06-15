@@ -88,7 +88,20 @@ test("Domains are computed correctly for discrete data.", function(t){
 
 })
 
+// TODO: figure out how to write the below for D
+test("Mapping.place does the right thing for both M", function(t){
+  t.plan(2)
+  
+  var points = data.slice(0, 1).concat(data.slice(-1))
 
+  console.log(points)
+
+  M.compute_domain(data)
+  M.range([-10, 10])
+
+  t.equal(M.place(points[0]), 10)
+  t.equal(M.place(points[1]), -10)
+})
 
 
 function make_some_data(a, b, ordinal_data) {
