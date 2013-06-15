@@ -94,8 +94,6 @@ test("Mapping.place does the right thing for both M", function(t){
   
   var points = data.slice(0, 1).concat(data.slice(-1))
 
-  console.log(points)
-
   M.compute_domain(data)
   M.range([-10, 10])
 
