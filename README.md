@@ -24,7 +24,7 @@ x = new Mapping(xScale, xAccessor)
 `x` has convenience methods for a number of common tasks. For example:
 
  - `x.scale` holds the reference to the original scale.
- - `x.range` and `x.domain` provide convenience access to `x.scale.domain` and
+ - `x.range` and `x.domain` provide convenient access to `x.scale.domain` and
    `x.scale.range`
  - `x.place` will map data points onto the screen. It does a little dance
    to prevent D3 from overwriting its `this` object, so you can use it in d3
