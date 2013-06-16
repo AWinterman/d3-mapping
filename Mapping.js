@@ -1,6 +1,7 @@
 var d3 = require("d3")
 // Mapping handles all the book-keeping required to map points 
 // from the data space into coordinates of screen space.
+
 module.exports = Mapping
 
 // #### Exports the constructor function.
@@ -14,7 +15,6 @@ module.exports = Mapping
 // ```
 
 function Mapping(scale, accessor){
-
   var self = this
 
   self.scale = scale 
@@ -86,7 +86,6 @@ proto.compute_domain = function(data, ordinal){
   }
   var self = this
     , points = data.map(self.accessor)
- 
   if (ordinal){
     self.domain(d3.set(points).values())
   } else {
@@ -102,12 +101,10 @@ function bound(self, d, w){
   if(d === undefined) {
     return self.domain()[w.idx]
   }
-
   if(!isNaN(d.length)) {
     self.domain()[w.idx] = w.func(d, self.accessor)
   } else {
     self.domain()[w.idx] = d
   }
-
   return self
 }

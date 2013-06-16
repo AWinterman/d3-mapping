@@ -1,4 +1,7 @@
-A simple utility to make working with d3 scales easier.
+# d3-Mapping #
+[![Build Status](https://secure.travis-ci.org/AWinterman/d3-mapping.png)](http://travis-ci.org/AWinterman/d3-mapping) 
+
+ A simple utility to make working with d3 scales easier.
 
 # Installation #
 

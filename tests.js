@@ -88,8 +88,7 @@ test("Domains are computed correctly for discrete data.", function(t){
 
 })
 
-// TODO: figure out how to write the below for D
-test("Mapping.place does the right thing for both M", function(t){
+test("Mapping.place does the right thing for M", function(t){
   t.plan(2)
   
   var points = data.slice(0, 1).concat(data.slice(-1))
@@ -97,8 +96,26 @@ test("Mapping.place does the right thing for both M", function(t){
   M.compute_domain(data)
   M.range([-10, 10])
 
-  t.equal(M.place(points[0]), 10)
-  t.equal(M.place(points[1]), -10)
+  t.equal(M.place(points[0]), 10, "Places the point at the end of the domain correctly")
+  t.equal(M.place(points[1]), -10, "Places the point at the beginning of the domain correctly")
+})
+
+
+test("Mapping.place does the right thing for D", function(t){
+  t.plan(5)
+  
+  var points = ordinal_data.map(function(d){ return {color: d}})
+
+  D.domain(ordinal_data)
+  D.range(["a", "b", "c", "d"])
+
+  var places = points.map(D.place)
+
+  t.equal(d3.set(places).values().length, ordinal_data.length, "make sure the mapping is 1:1 and onto")
+  places.forEach(function(d, i){
+    t.equal(d, D.range()[i], "Make sure the placement of the " + i + "-th point is correct")
+  })
+
 })
 
 
